@@ -1,0 +1,23 @@
+type Mutation {
+  # configure project hours
+  createAuditLog(input: createAuditLogs): AuditLogs!
+}
+
+type Query {
+  # get audit logs configurations
+  allAuditLog: [AuditLogs]
+} 
+
+type AuditLogs {  
+  id:                        Int 
+  action_name:               String
+  note:                      String
+  created_at:                String
+  created_by:                Int
+}
+
+input createAuditLogs {   
+  action_name:               String
+  note:                      String
+  created_by:                Int
+}

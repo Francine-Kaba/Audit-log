@@ -1,0 +1,18 @@
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = "5"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model audit_log {
+  id                        Int       @id @default(autoincrement())
+  action_name               String    
+  note                      String? 
+  created_at                DateTime?
+  created_by                Int?
+}
