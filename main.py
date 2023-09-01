@@ -24,5 +24,6 @@ print("🚀🚀 Server is up and running on 🔥🔥 " + url)
 schema = make_federated_schema(type_defs, mutation, query)
 app = GraphQL(schema, debug=True)
 
+
 if __name__ == '__main__':
     app.run()
