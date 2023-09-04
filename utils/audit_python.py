@@ -34,6 +34,20 @@ def resolve_user_info(audit_request):
     # Configure logging
     logging.basicConfig(filename='python.log', filemode='w', format='%(asctime)s - %(message)s')
 
-    # Create a log entry with both the message and audit_request
-    log_message = f'Created audit log: {audit_request}'
+    if isinstance(audit_request, tuple) and len(audit_request) >= 3:
+        field_name = audit_request[0]
+        parent_type = audit_request[3]
+        variable_values = audit_request[-3]
+
+        audit_result = {
+            'field_name': field_name,
+            'typename': parent_type,
+            'variable_values': variable_values
+        }
+
+        # print(audit_request)
+        # print(audit_result)
+
+    # Create a log entry with both the message and audit_result
+    log_message = f'Created audit log: {audit_result}'
     logging.warning(log_message)
